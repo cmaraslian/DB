@@ -1,0 +1,22 @@
+1) Desenvolver um bloco PL/SQL que exiba o nome e a idade armazenados em variáveis.
+
+
+2) Desenvolver um script PL/SQL que receba em variáveis o nome, idade e email. Para todas as entradas, validar os casos abaixo:
+- Caso a idade seja menor que 18 anos, retornar somente a mensagem "Idade não permitida.
+- O endereço de e-mail obrigatóriamente deve ter o caractere "@".
+- O nome deve ter no mínimo 2 nomes.
+Caso todas as condições acima estejam validadas, exibir todos os dados recebidos nas variáveis.
+
+3) Desenvolver um bloco PL/SQL que receba 5 valores e armazene a média dos 5 valores. Armazenar somente números inteiros.
+
+4) Desenvolver um Bloco PL/SQL que receba um número em uma variável e exiba o resto da divisão dos próximos 100 números. Imprimir se é Par ou ímpar.
+
+5) Desenvolver um Bloco PL/SQL que receba um nome, caso o nome exceda 30 caracteres exiba somente o sobrenome.
+
+6) Desenvolver um Bloco PL/SQL que exiba a seguinte mensagem de texto:
+'Hoje' || <sysdate> || ', estamos no seguinte dia da semana:' || <dia da semana>
+
+7) Desenvolva um bloco anônimo que exiba durante 365 dias (1 ano) apenas as datas que caem no sábado e domingo, após a entrada de uma data. Após a solicitação da entrada do campo data, exiba sequencialmente a data e o dia da semana que representa essa data. Utilize o comando loop para realizar essa tarefa. Utilize o pacote DBMS_OUTPUT para exibir esses valores. Exiba os valores em ordem de data
+
+
+

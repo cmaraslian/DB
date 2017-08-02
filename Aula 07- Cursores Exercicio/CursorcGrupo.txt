@@ -1,0 +1,15 @@
+DECLARE
+  cursor cGrupo is
+  select * from pf0064.LOC_grupo where cd_grupo between 1 and 5;
+  v_grupo cGrupo%rowtype;
+BEGIN
+  OPEN cGrupo;
+  LOOP
+      FETCH cGrupo into v_grupo  ;
+      EXIT WHEN cGrupo%NOTFOUND;
+      INSERT into LOC_GRUPO (CD_GRUPO,DS_GRUPO,VL_LOCACAO_DIARIA)
+      VALUES(v_grupo.CD_GRUPO,v_grupo.DS_GRUPO,v_grupo.VL_LOCACAO_DIARIA);
+    END LOOP;
+    CLOSE cGrupo;
+    COMMIT;
+END;

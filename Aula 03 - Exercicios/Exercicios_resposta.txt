@@ -1,0 +1,27 @@
+--Criar uma view chamada VW USUARIO_ATIVO, que retorne o código, nome e documento de todos os usuários ativos.
+
+create or replace view VW_USUARIO_ATIVO as (
+select IDN, NOME, DOC_IDENTIFICACAO from tab_funcionario where DT_DEMISSAO is null);
+
+select * from VW_USUARIO_ATIVO;
+
+--Criar uma view chamada VW_TOTAL_SALARIO, que retorne o total gasto com salários.
+
+create or replace view VW_TOTAL_SALARIO as(
+select sum (vl_salario_atual) as TOTAL_SALARIO from tab_funcionario);
+
+select * from VW_TOTAL_SALARIO;
+
+--Criar uma view chamada VW_QTD_FUNC, que retorne a quantidade de funcionários ativos.
+
+create or replace view VW_QTD_FUNC as (
+select count(*) as FUNCIONARIOS_ATIVOS from TAB_FUNCIONARIO where DT_DEMISSAO is null);
+
+select * from VW_QTD_FUNC
+
+ --Criar uma view chamada VW_NOME_FUNC, que retorne somente o primeiro nome dos funcionários ativos.
+create or replace view vw_nome_func as ( 
+select SUBSTR(nome,0,INSTR(nome,' ')-1) as primeiro_nome from tab_funcionario where DT_DEMISSAO is null);
+
+select * from vw_nome_func
+
