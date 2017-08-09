@@ -1,0 +1,4 @@
+Se usar uma função (ex Upper) , o indice nunca será utilizado.
+Indices com mais de 3% seletivo utilizarao praticamente toda a tabela.
+"Baixa seletividade"
+

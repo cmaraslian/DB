@@ -1,0 +1,94 @@
+
+
+--select * from PF0064.LOC_VEICULO
+
+CREATE OR REPLACE FUNCTION fun_nome_veiculo
+(p_nr_placa PF0064.loc_veiculo.nr_placa%type)
+return varchar2 is
+  v_resultado varchar2(1000);
+BEGIN
+  select tipo_automovel || ' ' || modelo || ' ' || cor 
+  into v_resultado
+  from PF0064.LOC_VEICULO 
+  where upper(nr_placa) = upper(p_nr_placa);
+  return v_resultado;
+EXCEPTION 
+  when no_data_found then
+  raise_application_error(-20001, 'Placa ' || p_nr_placa
+  || ' do veiculo não está cadastrada. Favor informar um codigo valido');
+  when others then
+  raise_application_error(-20002, 'Erro inesperado.' || sqlerrm);
+  
+END;
+
+
+create index idx_nr_placa_upper on PF0064.LOC_VEICULO (upper(nr_placa));
+
+select fun_nome_veiculo('DVC4345') from dual;
+
+
+
+
+
+select * from LOC_VEICULO
+
+CREATE OR REPLACE PROCEDURE PRC_INSERE_VEICULO
+(p_nr_placa in LOC_VEICULO.nome%type,
+p_cd_proprietario in LOC_VEICULO.CD_PROPRIETARIO%type,
+p_nr_chassis in LOC_VEICULO.NR_CHASSIS%type,
+p_status in LOC_VEICULO.status%type,
+p_tipo_automovel in LOC_VEICULO.tipo_automovel%type,
+p_km_atual in LOC_VEICULO.km_atual%type,
+p_combustivel in LOC_VEICULO.combustivel%type,
+p_modelo in LOC_VEICULO.modelo%type) is
+begin
+ insert into LOC_VEICULO (
+ nr_placa,
+ cd_proprietario,
+ nr_chassis,
+ status,
+ tipo_automovel,
+ km_atual,
+ combustivel,
+ modelo ) values (
+ p_nr_placa,
+ p_cd_proprietario,
+ p_nr_chassis,
+ p_status,
+ p_tipo_automovel,
+ p_km_atual,
+ p_combustivel,
+ p_modelo );
+ commit;
+end;
+
+begin
+PRC_INSERE_VEICULO('aaaa',1,'sadsadsa','A,'DA',1111,'DSADA','dsadsa')
+end
+
+
+
+
+
+
+
+
+create or replace procedure prc_agenda
+(p_nome in agenda2017.nome%type, p_telefone in agenda2017.nome%type) is 
+begin
+  insert into agenda2017 (nome,telefone)
+  values (p_nome, p_telefone);
+  commit;
+  exception 
+  when dup_val_on_index then
+    RAISE_APPLICATION_ERROR(-20001, 'Erro no insert');
+    RAISE_APPLICATION_ERROR(-20002, 'Erro generico'  || sqlcode);
+end;
+
+
+
+
+
+
+
+

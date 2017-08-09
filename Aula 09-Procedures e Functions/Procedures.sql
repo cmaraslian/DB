@@ -27,4 +27,5 @@ end;
 select * from agenda2017;
 
 
-
+Utilizaçao de procedures:
+Limitar e ter controle dos inputs dos dados
