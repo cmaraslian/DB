@@ -1,0 +1,12 @@
+Criar um procedimento de nomr prc_elimina_proprietario para eliminar um determinado proprietario na tabela loc_proprietario. Este procedimento recebera como parametro a chave primaria da tabela.
+
+Utilize todos exceptions necessarios para garantir que o tratamento de erro(mensagens) seja gerenciado pela aplicação.
+
+
+
+obs: fazer um count para saber se o registro tem filhos.
+
+LOC_ENDERECO_PROPRIETARIO
+
+LOC_VEICULO
+

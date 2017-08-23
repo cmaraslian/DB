@@ -1,0 +1,19 @@
+create or replace PROCEDURE prc_loc_proprietario
+  (p_codigo in loc_proprietario.CD_PROPRIETARIO%type)
+  
+      IS
+        v_cnt_veiculo INTEGER;
+        v_count2 INTEGER;
+      BEGIN
+          SELECT COUNT(*) INTO v_cnt_veiculo FROM LOC_ENDERECO_PROPRIETARIO WHERE CD_PROPRIETARIO = p_codigo;
+          SELECT COUNT(*) INTO v_count2 FROM LOC_VEICULO WHERE CD_PROPRIETARIO = p_codigo;
+          if v_count > 0 then
+            delete from LOC_ENDERECO_PROPRIETARIO WHERE CD_PROPRIETARIO = p_codigo;
+          end if;
+          
+          if v_count2 > 0 then
+            delete from LOC_VEICULO WHERE CD_PROPRIETARIO = p_codigo;
+          end if;  
+            delete from loc_proprietario where cd_proprietario = p_codigo;
+          
+      END;
