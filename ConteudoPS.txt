@@ -1,0 +1,57 @@
+**PS**
+
+-Cursores
+   -Alocação de objeto que reside em memoria e que tem ponteiros.
+   -Pode ser implicito(Organizado e controlado pelo banco de dados,
+    ex select into.Limita a quantidade de linha e sempre precisa retornar 1 registro).
+    No datadound e too many rows exceptions.
+   -Pode ser explicito(Declara o ponteiro,abre e fecha o cursor. Não possui limitação de um registro).
+-Exceptions
+    -A execption e tratada dentro do PLSQL. Os blocos BEGIN/END trazem isolamento.
+    -O raise application error irá abortar a execução	
+     Estrutura do execption:
+     
+     BEGIN
+     
+     EXCEPTION
+	WHEN THEN...
+	WHEN THEN...
+	WHEN THEN...
+	WHEN OTHERS THEN
+     END;
+			
+-Functions
+    -Function obrigatoriamente precisa retornar um valor.
+    -Exemplo de functions: SUM, COUNT, TOCHAR, TODATE
+    -Function pode fazer DML (Muitos desenvolvedores acham que não pode), apesar de nao ser uma boa pratica.
+    -Utilizade: Pontuar informações rapidas. Ex: passa um codigo e retorna um nome.
+    -Evitar processamento extenso e DML.
+    -Nao criar uma variavel com o mesmo nome de uma coluna do banco de dados	
+
+-Procedures
+    -Utilizado para processar dados, tratar DML
+    -Exemplo copiar tabela, mover dado
+    -Pode utilizar uma funcao , cursor outra procedure etc... 	
+-Packages
+    -Encapsula as procedures e functions em pactotes
+    -Seu proposito e organização
+    -Problemas de segurança pois voce nao consegue granular permissões das functions dentro de um pacote..
+    -Deve sempre ter um especificação. o body é opcional 
+-Triggers
+    -Dispara por eventos, pode ser DML ou DDL.
+    -Utilizado para criar controles, auditoria etc..
+    -Trigger mutante (Ocorre ao alterar e ler o evento ao mesmo tempo... é quando da pau)
+-Autonomous Transactions
+    -Para implementar basta colocar o codigo pragma autonomous_transaction na T2) 
+
+    -T1                          -T2 (PRC_AT autonomous transacion)
+	-Insert
+	-Update
+	-Select (deu pau)         declare
+	  ...			     pragma autonomous_transaction	
+	  ...			   	 begin
+	  ...				    insert log ... 
+	Exception			 commit;
+	  ...   		     end;  	
+	 prc_at 
+         roolback
